@@ -21,3 +21,20 @@ In this step, we:
 Run the sample script to verify your setup:
 ```bash
 python3 hello.py
+
+## 🐚 Step 2 — Linux & Scripting Basics
+
+This step adds a shell script that prints system information.
+
+### Script Location
+`scripts/sysinfo.sh`
+
+### What the Script Does
+- Prints the **current user** (`whoami`)
+- Prints the **current date and time** (`date`)
+- Prints **disk usage** in human-readable format (`df -h`)
+
+### How to Run
+From the project root:
+```bash
+./scripts/sysinfo.sh
