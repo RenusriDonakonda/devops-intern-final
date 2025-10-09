@@ -1,3 +1,5 @@
+[![CI](https://github.com/RenusriDonakonda/devops-intern-final/actions/workflows/ci.yml/badge.svg)](https://github.com/RenusriDonakonda/devops-intern-final/actions/workflows/ci.yml)
+
 # DevOps Intern Final Assessment
 
 **Name:** Donakonda Renusri 
