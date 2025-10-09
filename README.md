@@ -52,17 +52,17 @@ This step containerizes the `hello.py` script so it can run in any environment u
 
 ### **Dockerfile Content**
 `dockerfile`
-- Use a lightweight Python base image
-FROM python:3.10-slim
+ Use a lightweight Python base image:
+- FROM python:3.10-slim
 
-- Set working directory inside the container
-WORKDIR /app
+ Set working directory inside the container:
+- WORKDIR /app
 
-- Copy the Python script into the container
-COPY hello.py .
+ Copy the Python script into the container:
+- COPY hello.py .
 
-- Run the script when the container starts
-CMD ["python3", "hello.py"]
+ Run the script when the container starts:
+- CMD ["python3", "hello.py"]
 
 ###Build Docker Image:
 
