@@ -53,7 +53,7 @@ This step containerizes the `hello.py` script so it can run in any environment u
 ---
 
 ### **Dockerfile Content**
-dockerfile
+`dockerfile`
 # Use a lightweight Python base image
 FROM python:3.10-slim
 
@@ -66,10 +66,20 @@ COPY hello.py .
 # Run the script when the container starts
 CMD ["python3", "hello.py"]
 
-###Build Docker Image:
+# Build Docker Image:
 
 `docker build -t hello-devops:latest .`
 
-###How to Run:
+# How to Run:
 
 `docker run --rm hello-devops`
+
+
+## Deploy with Nomad
+
+1. Install Nomad and start a local agent (for testing):
+   nomad agent -dev
+
+2. Submit the job file:
+   nomad job run nomad/hello.nomad
+
