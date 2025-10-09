@@ -51,7 +51,7 @@ This step containerizes the `hello.py` script so it can run in any environment u
 ---
 
 ### **Dockerfile Content**
-`dockerfile`
+dockerfile
 # Use a lightweight Python base image
 FROM python:3.10-slim
 
