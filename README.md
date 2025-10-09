@@ -38,3 +38,15 @@ This step adds a shell script that prints system information.
 From the project root:
 ```bash
 ./scripts/sysinfo.sh
+
+## 🐳 Step 3 — Docker Basics
+
+### Build Docker Image
+```bash
+docker build -t hello-devops:latest .
+
+###Run Docker Container
+docker run --rm hello-devops
+
+###Expected Output:
+Hello, DevOps!
