@@ -19,9 +19,8 @@ In this step, we:
 
 ### How to Run
 Run the sample script to verify your setup:
-```bash
-python3 hello.py
 
+python3 hello.py
 
 ## 🐚 Step 2 — Linux & Scripting Basics
 
