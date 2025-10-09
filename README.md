@@ -20,7 +20,7 @@ In this step, we:
 ### How to Run
 Run the sample script to verify your setup:
 
-python3 hello.py
+`python3 hello.py`
 
 ## 🐚 Step 2 — Linux & Scripting Basics
 
@@ -34,8 +34,8 @@ What the Script Does:
 
 ### How to Run
 From the project root:
-```bash
-./scripts/sysinfo.sh
+
+`./scripts/sysinfo.sh`
 
 
 
@@ -65,9 +65,9 @@ COPY hello.py .
 CMD ["python3", "hello.py"]
 
 ###Build Docker Image:
-```bash
-docker build -t hello-devops:latest .
+
+`docker build -t hello-devops:latest .`
 
 ###How to Run:
-```bash
-docker run --rm hello-devops
+
+`docker run --rm hello-devops`
