@@ -22,31 +22,53 @@ Run the sample script to verify your setup:
 ```bash
 python3 hello.py
 
+
 ## 🐚 Step 2 — Linux & Scripting Basics
 
-This step adds a shell script that prints system information.
-
-### Script Location
+### **Script Location**
 `scripts/sysinfo.sh`
 
-### What the Script Does
-- Prints the **current user** (`whoami`)
-- Prints the **current date and time** (`date`)
-- Prints **disk usage** in human-readable format (`df -h`)
+What the Script Does:
+- Prints the current user (`whoami`)
+- Prints the current date and time (`date`)
+- Prints disk usage in human-readable format (`df -h`)
 
 ### How to Run
 From the project root:
 ```bash
 ./scripts/sysinfo.sh
 
+
+
 ## 🐳 Step 3 — Docker Basics
 
-### Build Docker Image
+This step containerizes the `hello.py` script so it can run in any environment using Docker.
+
+---
+
+### **Dockerfile Location**
+`Dockerfile`
+
+---
+
+### **Dockerfile Content**
+```dockerfile
+# Use a lightweight Python base image
+FROM python:3.10-slim
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Copy the Python script into the container
+COPY hello.py .
+
+# Run the script when the container starts
+CMD ["python3", "hello.py"]
+
+###Build Docker Image:
 ```bash
 docker build -t hello-devops:latest .
 
-###Run Docker Container
+###How to Run:
+```bash
 docker run --rm hello-devops
-
-###Expected Output:
-Hello, DevOps!
