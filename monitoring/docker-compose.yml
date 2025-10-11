@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  loki:
+    image: grafana/loki:2.8.2
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    restart: unless-stopped
+
+  promtail:
+    image: grafana/promtail:2.8.2
+    volumes:
+      - /var/log:/var/log:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - ./promtail-config.yml:/etc/promtail/promtail.yml:ro
+      - /tmp:/tmp
+    depends_on:
+      - loki
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:9.5.2
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: "admin"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - loki
+    restart: unless-stopped
