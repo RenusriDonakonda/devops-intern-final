@@ -83,3 +83,35 @@ CMD ["python3", "hello.py"]
 2. Submit the job file:
    nomad job run nomad/hello.nomad
 
+# How I started Loki (commands run)
+1) Change to monitoring folder:
+   cd monitoring
+
+2) Start Loki + Promtail + Grafana:
+   docker compose up -d
+   # or: docker-compose up -d
+
+3) Verify containers:
+   docker ps
+
+4) (Optional) Start a test log generator:
+   docker run -d --name test-logger busybox sh -c "while true; do echo 'hello from test-logger $(date)'; sleep 5; done"
+   # Or on systems where docker container files are not available to promtail:
+   echo "Hello from Promtail $(date)" >> /tmp/test.log
+
+# How I view logs
+A) Grafana UI:
+   - Open http://localhost:3000 (default admin/admin)
+   - Add data source: Loki, URL http://loki:3100 (or http://localhost:3100)
+   - Explore → run queries: {job="docker"} or {job="local-test"}
+
+B) Direct Loki API:
+   curl -G "http://localhost:3100/loki/api/v1/query" --data-urlencode 'query={job="docker"}'
+
+C) Check Promtail activity:
+   docker compose logs -f promtail
+
+# Notes / Troubleshooting:
+- On Windows/ Docker Desktop, /var/lib/docker/containers isn't available on the host; use WSL2 or use the 'local-test' __path__ (/tmp/*.log) as a workaround.
+- Ensure Promtail has read access to the log paths (mounted as :ro in compose).
+- If no logs appear, inspect promtail logs and verify Loki is reachable on port 3100.
