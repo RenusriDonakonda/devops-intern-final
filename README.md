@@ -75,13 +75,15 @@ CMD ["python3", "hello.py"]
 `docker run --rm hello-devops`
 
 
-## Deploy with Nomad
+## Step-5: Deploy with Nomad
 
 1. Install Nomad and start a local agent (for testing):
    nomad agent -dev
 
 2. Submit the job file:
    nomad job run nomad/hello.nomad
+
+   # Step-6: Monitoring with Grafana Loki
 
 # How I started Loki (commands run)
 1) Change to monitoring folder:
